@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "238616162188",
+    "project_id": "composechatbot-2d4c8",
+    "storage_bucket": "composechatbot-2d4c8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238616162188:android:e34e65d3a7596ce80530a9",
+        "android_client_info": {
+          "package_name": "me.gblrod.composechatbot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvQO6SKrYaJzjAAUrckjtOi2jj7JWtCo4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
