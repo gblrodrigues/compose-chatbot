@@ -11,8 +11,8 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 // Message colors
-val ModelMessageColor = Color(0xFF9273CD)
-val UserMessageColor = Color(0xFF7042A6)
+val AssistantAccentColor = Color(0xFF9273CD)
+val UserMessageColor = Color(0xFF9675B5)
 
 // Button colors
 val ButtonClearChatColor = Color(0xFFFC5656)
@@ -24,4 +24,13 @@ val SentMessageColor = Color(0xFF9BC9A5)
 val FailedMessageColor = Color(0xFFFF6D00)
 
 // Markdown colors
-val MarkdownColor = Color(0xFF40334D)
+val MarkdownInlineCodeBackground = Color(0xFF77717F)
+val MarkdownCodeBackground = Color(0xFF827B8B)
+
+
+// Quick Prompt colors
+val QuickPromptContainerColor = Color(0xFF53515A)
+val EmailIconColor = Color(0xFFA477F5)
+val DescriptionIconColor = Color(0xFF60A5FA)
+val IdeasIconColor = Color(0xFFFBBF24)
+val CodeIconColor = Color(0xFF34D399)

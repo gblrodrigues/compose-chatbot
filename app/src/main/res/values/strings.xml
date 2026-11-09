@@ -23,6 +23,16 @@
     <string name="confirm_alert_dialog_button">Confirm</string>
     <string name="cancel_alert_dialog_button">Cancel</string>
 
+    <!-- QuickPrompts -->
+    <string name="quick_prompt_email_suggestion">Write an email</string>
+    <string name="quick_prompt_email_prompt">Help me draft a professional email. Ask only one brief question about its purpose.</string>
+    <string name="quick_prompt_summarize_suggestion">Summarize a text</string>
+    <string name="quick_prompt_summarize_prompt">Briefly summarize the following text.</string>
+    <string name="quick_prompt_ideas_suggestion">Creative ideas</string>
+    <string name="quick_prompt_ideas_prompt">Suggest 3 creative ideas with brief descriptions.</string>
+    <string name="quick_prompt_explain_coding_suggestion">Explain coding</string>
+    <string name="quick_prompt_explain_coding_prompt">Briefly explain a programming concept with a simple example.</string>
+
     <!-- Exceptions -->
     <string name="chat_exception_network">Check your internet connection.</string>
     <string name="chat_exception_quota_exceeded">Usage limit reached. Please try again later.</string>

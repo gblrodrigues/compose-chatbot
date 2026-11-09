@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import me.gblrod.composechatbot.R
-import me.gblrod.composechatbot.ui.theme.ModelMessageColor
+import me.gblrod.composechatbot.ui.theme.AssistantAccentColor
 
 @Composable
 fun ChatWelcome(
@@ -43,7 +43,7 @@ fun ChatWelcome(
         Icon(
             imageVector = Icons.AutoMirrored.Filled.Message,
             contentDescription = null,
-            tint = ModelMessageColor,
+            tint = AssistantAccentColor,
             modifier = Modifier.size(48.dp)
         )
 
