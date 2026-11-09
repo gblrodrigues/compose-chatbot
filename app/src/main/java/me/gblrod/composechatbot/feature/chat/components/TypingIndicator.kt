@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import me.gblrod.composechatbot.R
-import me.gblrod.composechatbot.ui.theme.ModelMessageColor
+import me.gblrod.composechatbot.ui.theme.AssistantAccentColor
 
 @Composable
 fun TypingIndicator(
@@ -32,7 +32,7 @@ fun TypingIndicator(
         CircularProgressIndicator(
             modifier = Modifier.size(16.dp),
             strokeWidth = 2.dp,
-            color = ModelMessageColor
+            color = AssistantAccentColor
         )
 
         Text(

@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import me.gblrod.composechatbot.R
 import me.gblrod.composechatbot.domain.model.MessageStatus
 import me.gblrod.composechatbot.ui.theme.FailedMessageColor
-import me.gblrod.composechatbot.ui.theme.ModelMessageColor
+import me.gblrod.composechatbot.ui.theme.AssistantAccentColor
 import me.gblrod.composechatbot.ui.theme.PendingMessageColor
 import me.gblrod.composechatbot.ui.theme.SentMessageColor
 
@@ -38,7 +38,7 @@ fun MessageStatusIndicator(
                 CircularProgressIndicator(
                     modifier = Modifier.size(16.dp),
                     strokeWidth = 2.dp,
-                    color = ModelMessageColor
+                    color = AssistantAccentColor
                 )
 
                 Text(

@@ -20,6 +20,7 @@ import me.gblrod.composechatbot.domain.model.ChatMessage
 import me.gblrod.composechatbot.feature.chat.components.ChatInput
 import me.gblrod.composechatbot.feature.chat.components.ChatWelcome
 import me.gblrod.composechatbot.feature.chat.components.MessageList
+import me.gblrod.composechatbot.feature.chat.components.QuickPrompts
 
 @Composable
 fun ChatScreen(
@@ -32,7 +33,8 @@ fun ChatScreen(
 ) {
     var message by rememberSaveable { mutableStateOf("") }
     var hasStartedConversation by rememberSaveable { mutableStateOf(messageList.isNotEmpty()) }
-    val shouldShowWelcome = isHistoryLoaded && !hasStartedConversation && message.isEmpty() && messageList.isEmpty()
+    val shouldShowWelcome =
+        isHistoryLoaded && !hasStartedConversation && message.isEmpty() && messageList.isEmpty()
 
     val focusManager = LocalFocusManager.current
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -67,6 +69,16 @@ fun ChatScreen(
                 isLoading = isLoading,
                 messageList = messageList,
                 modifier = Modifier.fillMaxSize()
+            )
+        }
+
+        if (shouldShowWelcome) {
+            QuickPrompts(
+                onPromptClick = {
+                    hasStartedConversation = true
+                    onMessageSend(it)
+                    message = ""
+                }
             )
         }
 
