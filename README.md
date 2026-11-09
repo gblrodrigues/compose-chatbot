@@ -6,6 +6,7 @@ It features context-aware conversations, local message persistence, Markdown ren
 - [Preview](#preview)
 - [Features](#features)
 - [Architecture](#architecture)
+- [Tests](#tests)
 - [Biggest Challenge](#biggest-challenge)
 - [Technologies Used](#technologies-used)
 - [Contact](#contact)
@@ -14,7 +15,7 @@ It features context-aware conversations, local message persistence, Markdown ren
 <table>
   <tr>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/a123c5e6-013f-490b-9d6a-fcb2a6f9a448" width="250" alt="Welcome Screen"/>
+      <img src="https://github.com/user-attachments/assets/67c29a41-1510-4fce-9d71-d4674fa357e9" width="250" alt="Welcome Screen"/>
     </td>
     <td align="center">
       <img src="https://github.com/user-attachments/assets/8bb75f1b-0a0c-42da-8637-1d2d36279181" width="250" alt="Conversation"/>
@@ -84,6 +85,14 @@ ComposeChatbot follows the MVVM pattern with a layered architecture separating p
 ```
 
 Hilt handles dependency injection, while Kotlin Coroutines and Flow manage asynchronous operations and reactive data streams.
+
+## Tests
+ComposeChatbot includes unit tests covering ViewModel behavior, including:
+
+* Initial UI state
+* State management and updates
+* Chat interaction handling
+* Conversation state management
 
 ## Biggest Challenge
 
