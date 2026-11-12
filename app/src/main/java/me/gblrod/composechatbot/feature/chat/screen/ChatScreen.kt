@@ -29,7 +29,8 @@ fun ChatScreen(
     onMessageSend: (String) -> Unit,
     isLoading: Boolean,
     isHistoryLoaded: Boolean,
-    isClearing: Boolean
+    isClearing: Boolean,
+    onCopyMessage: (String) -> Unit
 ) {
     var message by rememberSaveable { mutableStateOf("") }
     var hasStartedConversation by rememberSaveable { mutableStateOf(messageList.isNotEmpty()) }
@@ -68,6 +69,9 @@ fun ChatScreen(
             MessageList(
                 isLoading = isLoading,
                 messageList = messageList,
+                onCopyMessage = { response ->
+                    onCopyMessage(response)
+                },
                 modifier = Modifier.fillMaxSize()
             )
         }

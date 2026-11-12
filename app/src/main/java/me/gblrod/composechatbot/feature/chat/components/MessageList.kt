@@ -15,7 +15,8 @@ import me.gblrod.composechatbot.domain.model.ChatMessage
 fun MessageList(
     messageList: List<ChatMessage>,
     modifier: Modifier = Modifier,
-    isLoading: Boolean
+    isLoading: Boolean,
+    onCopyMessage: (String) -> Unit
 ) {
     val state = rememberLazyListState()
 
@@ -42,7 +43,10 @@ fun MessageList(
             key = { it.id }
         ) {
             MessageRow(
-                chatMessage = it
+                chatMessage = it,
+                onCopyMessage = { response ->
+                    onCopyMessage(response)
+                }
             )
         }
     }

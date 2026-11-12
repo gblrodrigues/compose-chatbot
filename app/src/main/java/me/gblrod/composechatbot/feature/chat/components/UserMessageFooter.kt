@@ -13,16 +13,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import me.gblrod.composechatbot.R
+import me.gblrod.composechatbot.domain.model.ChatMessage
 import me.gblrod.composechatbot.domain.model.MessageStatus
-import me.gblrod.composechatbot.ui.theme.FailedMessageColor
 import me.gblrod.composechatbot.ui.theme.AssistantAccentColor
+import me.gblrod.composechatbot.ui.theme.FailedMessageColor
 import me.gblrod.composechatbot.ui.theme.PendingMessageColor
-import me.gblrod.composechatbot.ui.theme.SentMessageColor
 
 @Composable
-fun MessageStatusIndicator(
+fun UserMessageFooter(
     modifier: Modifier = Modifier,
-    status: MessageStatus
+    status: MessageStatus,
+    chatMessage: ChatMessage,
+    onCopyMessage: (String) -> Unit
 ) {
     Row(
         modifier = modifier
@@ -49,10 +51,9 @@ fun MessageStatusIndicator(
             }
 
             MessageStatus.SENT -> {
-                Text(
-                    text = stringResource(id = R.string.message_status_sent),
-                    color = SentMessageColor,
-                    style = MaterialTheme.typography.bodySmall
+                CopyMessage(
+                    chatMessage = chatMessage,
+                    onCopyMessage = { onCopyMessage(it) }
                 )
             }
 

@@ -17,16 +17,11 @@ val UserMessageColor = Color(0xFF9675B5)
 // Button colors
 val ButtonClearChatColor = Color(0xFFFC5656)
 val ButtonContainerDialogColor = Color(0xFFA78BCE)
+val ButtonOnCopyMessageColor = Color(0xFF4CAF50)
 
 // Status Messages colors
 val PendingMessageColor = Color(0xFFBBA9DC)
-val SentMessageColor = Color(0xFF9BC9A5)
 val FailedMessageColor = Color(0xFFFF6D00)
-
-// Markdown colors
-val MarkdownInlineCodeBackground = Color(0xFF77717F)
-val MarkdownCodeBackground = Color(0xFF827B8B)
-
 
 // Quick Prompt colors
 val QuickPromptContainerColor = Color(0xFF53515A)

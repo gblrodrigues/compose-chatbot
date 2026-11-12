@@ -46,4 +46,9 @@
     <string name="message_status_pending" tools:ignore="TypographyEllipsis">Sending...</string>
     <string name="message_status_sent">Sent</string>
     <string name="message_status_failed">Failed to send</string>
+
+    <!-- Copy Response -->
+    <string name="copy_message">Copy message</string>
+    <string name="copy_message_success">Message copied to clipboard!</string>
+    <string name="message_copied">Message copied to clipboard</string>
 </resources>

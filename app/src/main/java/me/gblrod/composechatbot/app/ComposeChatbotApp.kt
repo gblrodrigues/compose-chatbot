@@ -1,5 +1,6 @@
 package me.gblrod.composechatbot.app
 
+import android.content.ClipData
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -10,10 +11,14 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ClipEntry
+import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalResources
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 import me.gblrod.composechatbot.domain.model.ChatMessage
 import me.gblrod.composechatbot.feature.chat.screen.ChatScreen
 import me.gblrod.composechatbot.feature.chat.state.ChatUiEvent
@@ -34,8 +39,10 @@ fun ComposeChatbotApp(
     isClearing: Boolean
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
     val resources = LocalResources.current
     val configuration = LocalConfiguration.current
+    val localClipboard = LocalClipboard.current
 
     LaunchedEffect(events, configuration) {
         events.collect { event ->
@@ -79,6 +86,18 @@ fun ComposeChatbotApp(
             onMessageSend = onSendMessage,
             isHistoryLoaded = isHistoryLoaded,
             isClearing = isClearing,
+            onCopyMessage = { response ->
+                scope.launch {
+                    localClipboard.setClipEntry(
+                        clipEntry = ClipEntry(
+                            clipData = ClipData.newPlainText(
+                                "response",
+                                response
+                            )
+                        )
+                    )
+                }
+            },
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues = paddingValues),
