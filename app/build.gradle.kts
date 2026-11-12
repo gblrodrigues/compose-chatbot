@@ -67,6 +67,7 @@ dependencies {
     // Markdown Renderer
     implementation(libs.markdown.renderer)
     implementation(libs.markdown.renderer.m3)
+    implementation(libs.markdown.renderer.code)
 
     // DataStore
     implementation(libs.androidx.datastore.preferences)

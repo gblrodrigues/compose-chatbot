@@ -12,16 +12,21 @@ It features context-aware conversations, local message persistence, Markdown ren
 - [Contact](#contact)
 
 ## Preview
+### Full App Demo
+
+https://github.com/user-attachments/assets/b08d1420-1862-4b47-abc9-d87871579e90
+
+### Screenshots
 <table>
   <tr>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/67c29a41-1510-4fce-9d71-d4674fa357e9" width="250" alt="Welcome Screen"/>
+      <img src="https://github.com/user-attachments/assets/0418129b-8cf0-4151-a717-ecb57bb51fb5" width="250" alt="Welcome Screen"/>
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/8bb75f1b-0a0c-42da-8637-1d2d36279181" width="250" alt="Conversation"/>
+      <img src="https://github.com/user-attachments/assets/0963bfe8-6687-419a-b35c-dbee4965e791" width="250" alt="Conversation"/>
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/05b1766f-b0b3-42df-a91d-bad292976de6" width="250" alt="Code Blocks"/>
+      <img src="https://github.com/user-attachments/assets/e923f4d2-2c1d-4743-ba45-3daf7bf49d0a" width="250" alt="Code Blocks"/>
     </td>
   </tr>
   <tr>
@@ -114,6 +119,7 @@ allows the ViewModel to provide meaningful feedback to the user.
 | DI | [![Hilt](https://img.shields.io/badge/Hilt-34A853?style=flat&logo=android&logoColor=white)](https://dagger.dev/hilt/) | Dependency injection |
 | Persistence | [![Room](https://img.shields.io/badge/Room-4285F4?style=flat&logo=android&logoColor=white)](https://developer.android.com/training/data-storage/room) | Local conversation storage |
 | Preferences | [![DataStore](https://img.shields.io/badge/DataStore-3DDC84?style=flat&logo=android&logoColor=white)](https://developer.android.com/topic/libraries/architecture/datastore) | Persistent theme preferences |
+| Testing       | [![JUnit 4](https://img.shields.io/badge/JUnit%204-25A162?style=flat&logo=junit4&logoColor=white)](https://junit.org/) [![MockK](https://img.shields.io/badge/MockK-FF9800?style=flat)](https://mockk.io/) | ViewModel unit testing, coroutine control, and mocking Android logging. |
 | Async | [![Coroutines](https://img.shields.io/badge/Coroutines%20%26%20Flow-7F52FF?style=flat&logo=kotlin&logoColor=white)](https://kotlinlang.org/docs/coroutines-overview.html) | Asynchronous programming and reactive streams |
 | Markdown | [![Markdown Renderer](https://img.shields.io/badge/Markdown%20Renderer-6D4C9B?style=flat)](https://github.com/mikepenz/multiplatform-markdown-renderer) | Markdown rendering in Compose |
 

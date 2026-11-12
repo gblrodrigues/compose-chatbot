@@ -20,7 +20,10 @@ import me.gblrod.composechatbot.domain.model.MessageRole
 import me.gblrod.composechatbot.ui.theme.UserMessageColor
 
 @Composable
-fun MessageRow(chatMessage: ChatMessage) {
+fun MessageRow(
+    chatMessage: ChatMessage,
+    onCopyMessage: (String) -> Unit
+) {
     val isModel = chatMessage.role == MessageRole.MODEL
 
     Column(
@@ -30,12 +33,12 @@ fun MessageRow(chatMessage: ChatMessage) {
         Box(
             modifier = Modifier
                 .widthIn(max = if (isModel) Dp.Unspecified else 320.dp)
-                .padding(vertical = 4.dp)
+                .padding(vertical = if (isModel) 0.dp else 4.dp)
                 .clip(shape = MaterialTheme.shapes.large)
                 .background(color = if (isModel) Color.Transparent else UserMessageColor)
                 .padding(
-                    horizontal = 16.dp,
-                    vertical = 12.dp
+                    horizontal = if (isModel) 4.dp else 16.dp,
+                    vertical = if (isModel) 2.dp else 12.dp
                 )
         ) {
             if (isModel) {
@@ -51,9 +54,16 @@ fun MessageRow(chatMessage: ChatMessage) {
             }
         }
 
-        if (!isModel) {
-            MessageStatusIndicator(
-                status = chatMessage.status
+        if (isModel) {
+            CopyMessage(
+                chatMessage = chatMessage,
+                onCopyMessage = { onCopyMessage(it) }
+            )
+        } else {
+            UserMessageFooter(
+                status = chatMessage.status,
+                chatMessage = chatMessage,
+                onCopyMessage = { onCopyMessage(it) }
             )
         }
     }
