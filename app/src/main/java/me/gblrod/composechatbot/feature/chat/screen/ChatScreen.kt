@@ -1,5 +1,6 @@
 package me.gblrod.composechatbot.feature.chat.screen
 
+import android.net.Uri
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,7 +27,7 @@ import me.gblrod.composechatbot.feature.chat.components.QuickPrompts
 fun ChatScreen(
     messageList: List<ChatMessage>,
     modifier: Modifier = Modifier,
-    onMessageSend: (String) -> Unit,
+    onMessageSend: (String, Uri?) -> Unit,
     isLoading: Boolean,
     isHistoryLoaded: Boolean,
     isClearing: Boolean,
@@ -80,7 +81,7 @@ fun ChatScreen(
             QuickPrompts(
                 onPromptClick = {
                     hasStartedConversation = true
-                    onMessageSend(it)
+                    onMessageSend(it, null)
                     message = ""
                 }
             )
@@ -92,9 +93,9 @@ fun ChatScreen(
             isLoading = isLoading,
             isHistoryLoaded = isHistoryLoaded,
             isClearing = isClearing,
-            onMessageSend = {
+            onMessageSend = { it, uri ->
                 hasStartedConversation = true
-                onMessageSend(it)
+                onMessageSend(it, uri)
                 message = ""
             }
         )

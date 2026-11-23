@@ -4,7 +4,8 @@ data class ChatMessage(
     val message: String,
     val role: MessageRole,
     val id: Long = 0,
-    val status: MessageStatus = MessageStatus.SENT
+    val status: MessageStatus = MessageStatus.SENT,
+    val imagePath: String? = null
 )
 
 enum class MessageRole(

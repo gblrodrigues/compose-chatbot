@@ -13,5 +13,7 @@ data class ChatEntity(
     val role: String,
     val timestamp: Long = System.currentTimeMillis(),
     @ColumnInfo(defaultValue = "'sent'")
-    val status: String = MessageStatus.SENT.value
+    val status: String = MessageStatus.SENT.value,
+    @ColumnInfo(name = "image_path")
+    val imagePath: String? = null
 )

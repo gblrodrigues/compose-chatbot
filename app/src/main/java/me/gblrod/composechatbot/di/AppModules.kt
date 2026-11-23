@@ -9,7 +9,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import me.gblrod.composechatbot.data.room.dao.ChatMessageDao
 import me.gblrod.composechatbot.data.room.database.ComposeChatbotDatabase
-import me.gblrod.composechatbot.data.room.migration.MIGRATION_1_2
+import me.gblrod.composechatbot.data.room.migration.MIGRATION_2_3
 import javax.inject.Singleton
 
 @Module
@@ -25,7 +25,7 @@ object AppModules {
             context = context,
             klass = ComposeChatbotDatabase::class.java
         )
-            .addMigrations(MIGRATION_1_2)
+            .addMigrations(MIGRATION_2_3)
             .build()
     }
 

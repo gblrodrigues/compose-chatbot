@@ -1,6 +1,7 @@
 package me.gblrod.composechatbot.feature.chat.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,12 +13,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import me.gblrod.composechatbot.domain.model.ChatMessage
 import me.gblrod.composechatbot.domain.model.MessageRole
 import me.gblrod.composechatbot.ui.theme.UserMessageColor
+
 
 @Composable
 fun MessageRow(
@@ -30,36 +30,54 @@ fun MessageRow(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = if (isModel) Alignment.Start else Alignment.End
     ) {
-        Box(
-            modifier = Modifier
-                .widthIn(max = if (isModel) Dp.Unspecified else 320.dp)
-                .padding(vertical = if (isModel) 0.dp else 4.dp)
-                .clip(shape = MaterialTheme.shapes.large)
-                .background(color = if (isModel) Color.Transparent else UserMessageColor)
-                .padding(
-                    horizontal = if (isModel) 4.dp else 16.dp,
-                    vertical = if (isModel) 2.dp else 12.dp
-                )
-        ) {
-            if (isModel) {
-                MarkdownMessage(
-                    content = chatMessage.message
-                )
-            } else {
-                Text(
-                    text = chatMessage.message,
-                    color = MaterialTheme.colorScheme.onSurface,
-                    style = MaterialTheme.typography.bodyLarge
-                )
-            }
-        }
-
         if (isModel) {
+            Box(
+                modifier = Modifier.padding(
+                    horizontal = 4.dp,
+                    vertical = 2.dp
+                )
+            ) {
+                MarkdownMessage(content = chatMessage.message)
+            }
+
             CopyMessage(
                 chatMessage = chatMessage,
                 onCopyMessage = { onCopyMessage(it) }
             )
         } else {
+            Column(
+                modifier = Modifier
+                    .widthIn(max = 320.dp)
+                    .padding(vertical = 4.dp),
+                horizontalAlignment = Alignment.End,
+                verticalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                chatMessage.imagePath
+                    ?.takeIf { it.isNotBlank() }
+                    ?.let { imagePath ->
+                        ChatMessageImage(imagePath = imagePath)
+                    }
+
+                if (chatMessage.message.isNotBlank()) {
+                    Box(
+                        modifier = Modifier
+                            .widthIn(max = 320.dp)
+                            .clip(shape = MaterialTheme.shapes.large)
+                            .background(color = UserMessageColor)
+                            .padding(
+                                horizontal = 16.dp,
+                                vertical = 12.dp
+                            )
+                    ) {
+                        Text(
+                            text = chatMessage.message,
+                            color = MaterialTheme.colorScheme.onSurface,
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                    }
+                }
+            }
+
             UserMessageFooter(
                 status = chatMessage.status,
                 chatMessage = chatMessage,

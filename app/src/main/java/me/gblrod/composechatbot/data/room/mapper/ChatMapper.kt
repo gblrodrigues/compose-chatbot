@@ -11,12 +11,14 @@ fun ChatEntity.toChatMessage() = ChatMessage(
     role = MessageRole.entries.firstOrNull {
         it.value == role
     } ?: throw IllegalStateException("Unknown message role in database: $role"),
-    status = MessageStatus.from(value = status)
+    status = MessageStatus.from(value = status),
+    imagePath = imagePath
 )
 
 fun ChatMessage.toChatEntity() = ChatEntity(
     id = id,
     message = message,
     role = role.value,
-    status = status.value
+    status = status.value,
+    imagePath = imagePath
 )
