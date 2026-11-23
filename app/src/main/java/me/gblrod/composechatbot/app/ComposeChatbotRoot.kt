@@ -24,7 +24,12 @@ fun ComposeChatbotRoot(
                 currentTheme = state.themeOptions,
                 onThemeSelected = { settingsViewModel.setTheme(theme = it) },
                 onClearConversation = { chatViewModel.clearConversation() },
-                onSendMessage = { chatViewModel.sendMessage(question = it) },
+                onSendMessage = { it, uri ->
+                    chatViewModel.sendMessage(
+                        question = it,
+                        imageUri = uri
+                    )
+                },
                 isLoading = chatViewModel.isLoading,
                 events = chatViewModel.events,
                 isHistoryLoaded = chatViewModel.isHistoryLoaded,

@@ -1,5 +1,6 @@
 package me.gblrod.composechatbot.feature.chat.viewModel
 
+import android.net.Uri
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
@@ -64,18 +65,13 @@ class ChatViewModel @Inject constructor(
         }
     }
 
-    fun sendMessage(question: String) {
+    fun sendMessage(question: String, imageUri: Uri?) {
         val cleanQuestion = question.trim()
-        if (!isHistoryLoaded || cleanQuestion.isBlank() || isLoading || isClearing) return
+        if (!isHistoryLoaded || (cleanQuestion.isBlank() && imageUri == null) || isLoading || isClearing) return
+
         val history = messageList.filter {
             it.status == MessageStatus.SENT
         }
-
-        val userMessage = ChatMessage(
-            message = cleanQuestion,
-            role = MessageRole.USER,
-            status = MessageStatus.PENDING
-        )
 
         isLoading = true
 
@@ -83,13 +79,27 @@ class ChatViewModel @Inject constructor(
             var userMessageId: Long? = null
 
             try {
-                userMessageId = chatRepository.insertMessage(
+                val imagePath = imageUri?.let {
+                    chatRepository.saveImage(it)
+                }
+
+                val userMessage = ChatMessage(
+                    message = cleanQuestion,
+                    role = MessageRole.USER,
+                    status = MessageStatus.PENDING,
+                    imagePath = imagePath
+                )
+
+                val insertedMessageId = chatRepository.insertMessage(
                     message = userMessage
                 )
 
+                userMessageId = insertedMessageId
+
                 val response = chatRepository.sendMessage(
                     question = cleanQuestion,
-                    history = history
+                    history = history,
+                    imageUri = imagePath
                 )
 
                 val modelMessage = ChatMessage(
@@ -98,7 +108,7 @@ class ChatViewModel @Inject constructor(
                 )
 
                 chatRepository.completeUserMessage(
-                    userMessageId = userMessageId,
+                    userMessageId = insertedMessageId,
                     modelMessage = modelMessage
                 )
 

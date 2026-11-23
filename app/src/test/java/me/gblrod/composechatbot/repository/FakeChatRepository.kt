@@ -1,5 +1,6 @@
 package me.gblrod.composechatbot.repository
 
+import android.net.Uri
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.emitAll
@@ -20,6 +21,10 @@ class FakeChatRepository(
     override val messages: Flow<List<ChatMessage>> = flow {
         operations.add(Operation.COLLECT_MESSAGES)
         emitAll(_messages)
+    }
+
+    override suspend fun saveImage(uri: Uri): String {
+        throw NotImplementedError()
     }
 
     override suspend fun markPendingMessagesAsFailed(): Int {
@@ -44,7 +49,7 @@ class FakeChatRepository(
         _messages.value = messages
     }
 
-    override suspend fun sendMessage(question: String, history: List<ChatMessage>): String {
+    override suspend fun sendMessage(question: String, history: List<ChatMessage>, imageUri: String?): String {
         throw NotImplementedError()
     }
 

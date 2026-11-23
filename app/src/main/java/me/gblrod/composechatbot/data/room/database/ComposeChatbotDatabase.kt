@@ -7,7 +7,7 @@ import me.gblrod.composechatbot.data.room.entity.ChatEntity
 
 @Database(
     entities = [ChatEntity::class],
-    version = 2,
+    version = 3,
     exportSchema = true
 )
 abstract class ComposeChatbotDatabase : RoomDatabase() {

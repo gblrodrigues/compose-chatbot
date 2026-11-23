@@ -1,6 +1,7 @@
 package me.gblrod.composechatbot.app
 
 import android.content.ClipData
+import android.net.Uri
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -31,7 +32,7 @@ fun ComposeChatbotApp(
     currentTheme: ThemeOptions,
     onThemeSelected: (ThemeOptions) -> Unit,
     onClearConversation: () -> Unit,
-    onSendMessage: (String) -> Unit,
+    onSendMessage: (String, Uri?) -> Unit,
     messageList: List<ChatMessage>,
     isLoading: Boolean,
     events: Flow<ChatUiEvent>,
@@ -83,7 +84,9 @@ fun ComposeChatbotApp(
         ChatScreen(
             isLoading = isLoading,
             messageList = messageList,
-            onMessageSend = onSendMessage,
+            onMessageSend = { it, uri ->
+                onSendMessage(it, uri)
+            },
             isHistoryLoaded = isHistoryLoaded,
             isClearing = isClearing,
             onCopyMessage = { response ->
